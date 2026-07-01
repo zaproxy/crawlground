@@ -67,6 +67,19 @@ app.post('/set-tool', (req, res) => {
   res.json({ ok: true, tool: store.currentTool });
 });
 
+// Used by navigation/06-http-redirect: issues a 302 redirect to the target URL.
+app.get('/api/redirect', (req, res) => {
+  const url = req.query.url || '/';
+  res.redirect(302, url);
+});
+
+// Used by frames/03-iframe-src: returns a minimal HTML page containing a link to
+// the given URL, so the iframe has a same-origin src rather than inline srcdoc.
+app.get('/api/page', (req, res) => {
+  const url = req.query.url || '';
+  res.send(`<!doctype html><html lang="en"><body><a href="${url}">Click me</a></body></html>`);
+});
+
 // Used by the fetch-injected dynamic-content test: echoes back a known score URL
 // so the link is only discoverable after a network round-trip.
 app.get('/api/reveal', (req, res) => {
