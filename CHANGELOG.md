@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-07-06
+
+### New test
+
+**Other**
+- `forms/01-bot-detection-globals` — Simulates an Akamai Bot Manager-style check.
+
 ## 2026-06-12
 
 ### New tests
